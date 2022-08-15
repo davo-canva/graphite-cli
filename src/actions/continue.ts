@@ -22,22 +22,12 @@ export async function continueAction(
   if (opts.addAll) {
     context.metaCache.addAll();
   }
-  const rebasedBranchBase = context.continueConfig.data.rebasedBranchBase;
   const branchesToSync = context.continueConfig.data?.branchesToSync;
   const branchesToRestack = context.continueConfig.data?.branchesToRestack;
 
-  if (!rebasedBranchBase) {
-    clearContinuation(context);
-    context.metaCache.abortRebase();
-    throw new ExitFailedError('Invalid rebase state, aborting.');
-  }
-
-  const cont = context.metaCache.continueRebase(rebasedBranchBase);
+  const cont = context.metaCache.continueRebase();
   if (cont.result === 'REBASE_CONFLICT') {
-    persistContinuation(
-      { branchesToRestack: branchesToRestack, rebasedBranchBase },
-      context
-    );
+    persistContinuation({ branchesToRestack: branchesToRestack }, context);
     printConflictStatus(`Rebase conflict is not yet resolved.`, context);
     throw new RebaseConflictError();
   }

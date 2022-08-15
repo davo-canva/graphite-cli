@@ -210,7 +210,6 @@ async function handleSameParent(
         persistContinuation(
           {
             branchesToSync: args.remainingBranchesToSync,
-            rebasedBranchBase: result.rebasedBranchBase,
           },
           context
         );

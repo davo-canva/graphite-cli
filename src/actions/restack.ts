@@ -37,7 +37,6 @@ export function restackBranches(
         persistContinuation(
           {
             branchesToRestack: branchNames,
-            rebasedBranchBase: result.rebasedBranchBase,
           },
           context
         );

@@ -18,7 +18,6 @@ export function editBranchAction(context: TContext): void {
           currentBranchName,
           SCOPE.UPSTACK_EXCLUSIVE
         ),
-        rebasedBranchBase: result.rebasedBranchBase,
       },
       context
     );
