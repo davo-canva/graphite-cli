@@ -116,6 +116,6 @@ jobs:
         with:
           prerelease: true
           files: |
-            gt-win.exe
-            gt-mac
-            gt-linux
+            ${{ github.workspace }}/gt-win.exe
+            ${{ github.workspace }}/gt-mac
+            ${{ github.workspace }}/gt-linux
