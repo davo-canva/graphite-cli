@@ -103,8 +103,8 @@ jobs:
       - name: Download mac
         uses: actions/download-artifact@v3
         with:
-          name: gt-mac-${{ github.sha }}
-          path: ${{ github.workspace }}/gt-mac
+          name: gt-macos-${{ github.sha }}
+          path: ${{ github.workspace }}/gt-macos
       - name: Download linux
         uses: actions/download-artifact@v3
         with:
