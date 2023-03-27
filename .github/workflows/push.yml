@@ -1,5 +1,6 @@
 name: Push CI
-
+permissions:
+  contents: write
 on:
   push:
     branches: [main]
@@ -115,6 +116,6 @@ jobs:
         with:
           prerelease: true
           files: |
-            gt-win-${{ github.sha }}.exe
-            gt-mac-${{ github.sha }}
-            gt-linux-${{ github.sha }}
+            gt-win.exe
+            gt-mac
+            gt-linux
