@@ -112,7 +112,7 @@ jobs:
         run: |
           mv gt-win-${{ github.sha }}.exe gt-win.exe;
           mv gt-macos-${{ github.sha }} gt-macos;
-          mv gt-linux=${{ github.sha }} gt-linux
+          mv gt-linux-${{ github.sha }} gt-linux
       - name: Release
         uses: ncipollo/release-action@v1
         with:
