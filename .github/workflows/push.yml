@@ -113,11 +113,15 @@ jobs:
           path: gt-linux
       - name: Test
         run: pwd; ls; echo ${{ github.workspace }}; ls ${{ github.workspace }}
+      - name: Make dummy file
+        run: echo test > /hi; ls /
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           prerelease: true
           files: |
+            /hi
+            hi
             gt-win.exe
             gt-mac
             gt-linux
