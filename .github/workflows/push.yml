@@ -111,15 +111,11 @@ jobs:
         with:
           name: gt-linux-${{ github.sha }}
           path: gt-linux
-      - name: Test
-        run: pwd; ls; echo ${{ github.workspace }}; ls ${{ github.workspace }}
-      - name: Test 2
-        run: ls ${{ github.workspace }}/gt-win.exe
+      - name: LS
+        run: ls
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         with:
+          artifacts: "gt-win.exe,gt-macos,gt-linux"
+          draft: false
           prerelease: true
-          files: |
-            ${{ github.workspace }}/gt-win.exe
-            ${{ github.workspace }}/gt-mac
-            ${{ github.workspace }}/gt-linux
