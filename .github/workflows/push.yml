@@ -119,3 +119,4 @@ jobs:
           artifacts: "gt-win.exe,gt-macos,gt-linux"
           draft: false
           prerelease: true
+          allowUpdates: true
