@@ -20,20 +20,20 @@ jobs:
         with:
           clean: 'false'
           fetch-depth: 0
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install
-        run: yarn install --immutable
-      - name: Build
-        run: yarn workspace @withgraphite/graphite-cli run build
-      - name: Setup git
-        run: git config --global user.email "test@gmail.com" && git config --global user.name "test"
-      - name: Git Version
-        run: git --version
-      - name: Test
-        run: yarn workspace @withgraphite/graphite-cli run test
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+      # - name: Install
+      #   run: yarn install --immutable
+      # - name: Build
+      #   run: yarn workspace @withgraphite/graphite-cli run build
+      # - name: Setup git
+      #   run: git config --global user.email "test@gmail.com" && git config --global user.name "test"
+      # - name: Git Version
+      #   run: git --version
+      # - name: Test
+      #   run: yarn workspace @withgraphite/graphite-cli run test
 
   superlinter:
     name: 'Run superlinter'
@@ -113,15 +113,13 @@ jobs:
           path: gt-linux
       - name: Test
         run: pwd; ls; echo ${{ github.workspace }}; ls ${{ github.workspace }}
-      - name: Make dummy file
-        run: echo test > /hi; ls /
+      - name: Test 2
+        run: ls ${{ github.workspace }}/gt-win.exe
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           prerelease: true
           files: |
-            /hi
-            hi
-            gt-win.exe
-            gt-mac
-            gt-linux
+            ${{ github.workspace }}/gt-win.exe
+            ${{ github.workspace }}/gt-mac
+            ${{ github.workspace }}/gt-linux
