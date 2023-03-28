@@ -100,22 +100,24 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: gt-win-${{ github.sha }}.exe
-          path: ${{ github.workspace }}/gt-win.exe
+          path: gt-win.exe
       - name: Download mac
         uses: actions/download-artifact@v3
         with:
           name: gt-macos-${{ github.sha }}
-          path: ${{ github.workspace }}/gt-macos
+          path: gt-macos
       - name: Download linux
         uses: actions/download-artifact@v3
         with:
           name: gt-linux-${{ github.sha }}
-          path: ${{ github.workspace }}/gt-linux
+          path: gt-linux
+      - name: Test
+        run: pwd; ls; echo ${{ github.workspace }}; ls ${{ github.workspace }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           prerelease: true
           files: |
-            ${{ github.workspace }}/gt-win.exe
-            ${{ github.workspace }}/gt-mac
-            ${{ github.workspace }}/gt-linux
+            gt-win.exe
+            gt-mac
+            gt-linux
