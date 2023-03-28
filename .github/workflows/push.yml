@@ -111,7 +111,7 @@ jobs:
       - name: Rename files
         run: |
           mv gt-win-${{ github.sha }}.exe gt-win.exe;
-          mt gt-macos-${{ github.sha }} gt-macos;
+          mv gt-macos-${{ github.sha }} gt-macos;
           mv gt-linux=${{ github.sha }} gt-linux
       - name: Release
         uses: ncipollo/release-action@v1
