@@ -1,0 +1,1 @@
+{"version":3,"file":"file_contents.js","sourceRoot":"","sources":["../../../../src/lib/git/file_contents.ts"],"names":[],"mappings":";;;AAAA,qCAAyC;AAEzC,SAAgB,eAAe,CAAC,GAAW,EAAE,IAAY;IACvD,OAAO,IAAA,sBAAa,EAAC;QACnB,IAAI,EAAE,CAAC,MAAM,EAAE,GAAG,GAAG,IAAI,IAAI,EAAE,CAAC;QAChC,OAAO,EAAE,OAAO;QAChB,QAAQ,EAAE,cAAc;KACzB,CAAC,CAAC;AACL,CAAC;AAND,0CAMC"}

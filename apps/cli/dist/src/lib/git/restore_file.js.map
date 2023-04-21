@@ -1,0 +1,1 @@
+{"version":3,"file":"restore_file.js","sourceRoot":"","sources":["../../../../src/lib/git/restore_file.ts"],"names":[],"mappings":";;;AAAA,qCAAyC;AAEzC,SAAgB,WAAW,CAAC,IAAY;IACtC,IAAA,sBAAa,EAAC;QACZ,IAAI,EAAE,CAAC,SAAS,EAAE,KAAK,EAAE,IAAI,CAAC;QAC9B,OAAO,EAAE,EAAE,KAAK,EAAE,QAAQ,EAAE;QAC5B,OAAO,EAAE,OAAO;QAChB,QAAQ,EAAE,OAAO;KAClB,CAAC,CAAC;AACL,CAAC;AAPD,kCAOC"}

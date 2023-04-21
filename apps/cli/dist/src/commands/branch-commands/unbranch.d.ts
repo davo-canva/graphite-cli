@@ -1,0 +1,10 @@
+import yargs from 'yargs';
+declare const args: {};
+declare type argsT = yargs.Arguments<yargs.InferredOptionTypes<typeof args>>;
+export declare const aliases: string[];
+export declare const command = "unbranch";
+export declare const canonical = "branch unbranch";
+export declare const description = "Delete the current branch but retain the state of files in the working tree.";
+export declare const builder: {};
+export declare const handler: (argv: argsT) => Promise<void>;
+export {};
