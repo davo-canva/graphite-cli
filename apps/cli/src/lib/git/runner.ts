@@ -84,6 +84,8 @@ function runGitCommandInternal(params: TRunGitCommandParameters): string {
 }
 
 export class CommandFailedError extends Error {
+  status: number;
+
   constructor(failure: {
     command: string;
     args: string[];
@@ -104,6 +106,7 @@ export class CommandFailedError extends Error {
       ].join('\n')
     );
     this.name = 'CommandFailed';
+    this.status = failure.status;
   }
 }
 

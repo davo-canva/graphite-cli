@@ -1,13 +1,7 @@
-import { runGitCommand } from './runner';
+import { CommandFailedError, runGitCommand } from './runner';
 
 export function detectStagedChanges(): boolean {
-  return (
-    runGitCommand({
-      args: [`--no-pager`, `diff`, `--no-ext-diff`, `--shortstat`, `--cached`],
-      onError: 'throw',
-      resource: 'detectStagedChanges',
-    }).length > 0
-  );
+  return hasDiff({ args: ['--cached'], resource: 'detectStagedChanges' });
 }
 
 export function getUnstagedChanges(): string {
@@ -43,21 +37,7 @@ export function showDiff(left: string, right: string): string {
 }
 
 export function isDiffEmpty(left: string, right: string): boolean {
-  return (
-    runGitCommand({
-      args: [
-        `--no-pager`,
-        `diff`,
-        `--no-ext-diff`,
-        `--shortstat`,
-        left,
-        right,
-        `--`,
-      ],
-      onError: 'throw',
-      resource: 'isDiffEmpty',
-    }).length === 0
-  );
+  return !hasDiff({ args: [left, right, '--'], resource: 'isDiffEmpty' });
 }
 
 export function getDiff(left: string, right: string | undefined): string {
@@ -66,4 +46,20 @@ export function getDiff(left: string, right: string | undefined): string {
     onError: 'throw',
     resource: 'getDiff',
   });
+}
+
+function hasDiff(opts: { args: string[]; resource: string }): boolean {
+  try {
+    runGitCommand({
+      args: ['diff', '--no-ext-diff', '--quiet', ...opts.args],
+      onError: 'throw',
+      resource: opts.resource,
+    });
+  } catch (e) {
+    if (e instanceof CommandFailedError && e.status === 1) {
+      return true;
+    }
+    throw e;
+  }
+  return false;
 }
