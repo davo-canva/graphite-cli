@@ -1,8 +1,9 @@
 import type { BranchName } from "@withgraphite/gti-cli-shared-types";
 import type { ApplyPreviewsFuncType, PreviewContext } from "../previews";
 
-import { CommitPreview } from "../previews";
-import { Operation } from "./Operation";
+
+import { CommitPreview } from '../previews';
+import { Operation } from './Operation';
 
 export class HideOperation extends Operation {
   constructor(private source: BranchName) {

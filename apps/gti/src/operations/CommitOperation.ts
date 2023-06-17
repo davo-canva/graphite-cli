@@ -2,7 +2,6 @@ import type {
   BranchName,
   RepoRelativePath,
 } from "@withgraphite/gti-cli-shared-types";
-import type { EditedMessage } from "../CommitInfo";
 import type { CommitTree } from "../getCommitTree";
 import type {
   ApplyPreviewsFuncType,
@@ -24,10 +23,10 @@ export class CommitOperation extends Operation {
     /**
      * description is currently ignored
      */
-    private message: EditedMessage,
+    private message: string,
     private originalHeadHash: BranchName,
     /**
-     * currently ignored
+     * @nocommit currently ignored
      */
     private filesPathsToCommit?: Array<RepoRelativePath>
   ) {
@@ -41,7 +40,7 @@ export class CommitOperation extends Operation {
       "branch",
       "create",
       "--message",
-      `${this.message.title}`,
+      `${this.message}`,
     ];
     return args;
   }
@@ -56,12 +55,15 @@ export class CommitOperation extends Operation {
       return undefined;
     }
 
+    const [title] = this.message.split(/\n+/, 1);
+    const description = this.message.slice(title.length);
+
     const optimisticCommit: CommitTree = {
       children: [],
       info: {
         author: head?.author ?? "",
-        description: this.message.description,
-        title: this.message.title,
+        description: description,
+        title: title,
         // TODO: we should include the files that will be in the commit.
         // These files are visible in the commit info view during optimistic state.
         filesSample: [],
